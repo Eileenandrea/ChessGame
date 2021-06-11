@@ -20,7 +20,6 @@ let myinterval = -1;
 let whitePtimer = document.getElementById("whiteP-timer");
 let blackPtimer = document.getElementById("blackP-timer");
 let innercontainer = document.querySelector(".innercontainer");
-// prettier-ignore
 const whites = {king: "♔",queen: "♕",rook: "♖",bishop: "♗",knight: "♘",pawn: "♙",};
 const black = {king: "♚",queen: "♛",rook: "♜",bishop: "♝",knight: "♞",pawn: "♟︎",};
 let whiteP = Object.values(whites);
@@ -266,37 +265,20 @@ function printID(e) {
 						if ((pick == black.king || pick == whites.king) &&(el.id == `box-7-2` ||el.id == `box-7-6` ||el.id == `box-0-2` ||el.id == `box-0-6`)) {
 							if (el.id == `box-7-2` || el.id == `box-0-2`) {
 								elarr = el.id.split("-");
-								let rook = document.getElementById(
-									`${elarr[0]}-${elarr[1]}-${0}`
-								).innerHTML;
-								document.getElementById(
-									`${elarr[0]}-${elarr[1]}-${0}`
-								).innerHTML = "";
-								document.getElementById(
-									`${elarr[0]}-${elarr[1]}-${3}`
-								).innerHTML = rook;
+								let rook = document.getElementById(`${elarr[0]}-${elarr[1]}-${0}`).innerHTML;
+								document.getElementById(`${elarr[0]}-${elarr[1]}-${0}`).innerHTML = "";
+								document.getElementById(`${elarr[0]}-${elarr[1]}-${3}`).innerHTML = rook;
 							} else if (el.id == `box-7-6` || el.id == `box-0-6`) {
 								elarr = el.id.split("-");
-								let rook = document.getElementById(
-									`${elarr[0]}-${elarr[1]}-${7}`
-								).innerHTML;
-								document.getElementById(
-									`${elarr[0]}-${elarr[1]}-${7}`
-								).innerHTML = "";
-								document.getElementById(
-									`${elarr[0]}-${elarr[1]}-${7}`
-								).innerHTML = "";
-								document.getElementById(
-									`${elarr[0]}-${elarr[1]}-${5}`
-								).innerHTML = rook;
+								let rook = document.getElementById(`${elarr[0]}-${elarr[1]}-${7}`).innerHTML;
+								document.getElementById(`${elarr[0]}-${elarr[1]}-${7}`).innerHTML = "";
+								document.getElementById(`${elarr[0]}-${elarr[1]}-${7}`).innerHTML = "";
+								document.getElementById(`${elarr[0]}-${elarr[1]}-${5}`).innerHTML = rook;
 							}
 						}
 						//pawn promotion
 						elarray = el.id.split(`-`);
-						if (
-							(pick == whites.pawn && elarray[1] == 0) ||
-							(pick == black.pawn && elarray[1] == 7)
-						) {
+						if ((pick == whites.pawn && elarray[1] == 0) ||(pick == black.pawn && elarray[1] == 7)) {
 							let pawnpromote;
 							pawnpromo();
 							let promopawn = document.querySelectorAll(".promopawn");
@@ -316,27 +298,13 @@ function printID(e) {
 									let elminus = Number(elarray[2]) - 1;
 									let elplus = Number(elarray[2]) + 1;
 									if (elminus >= 0) {
-										enpassantparallelEL.push(
-											document.getElementById(
-												`${elarray[0]}-${elarray[1]}-${elminus}`
-											)
-										);
+										enpassantparallelEL.push(document.getElementById(`${elarray[0]}-${elarray[1]}-${elminus}`));
 									}
 									if (elplus < 8) {
-										enpassantparallelEL.push(
-											document.getElementById(
-												`${elarray[0]}-${elarray[1]}-${elplus}`
-											)
-										);
+										enpassantparallelEL.push(document.getElementById(`${elarray[0]}-${elarray[1]}-${elplus}`));
 									}
-									for (
-										let i = 0;
-										i < enpassantparallelEL.length;
-										i++
-									) {
-										if (
-											enpassantparallelEL[i].innerHTML == black.pawn
-										) {
+									for (let i = 0; i < enpassantparallelEL.length;i++) {
+										if (enpassantparallelEL[i].innerHTML == black.pawn) {
 											el.classList.add("enpassant");
 										}
 									}
@@ -347,24 +315,12 @@ function printID(e) {
 									let elminus = Number(elarray[2]) - 1;
 									let elplus = Number(elarray[2]) + 1;
 									if (elminus >= 0) {
-										enpassantparallelEL.push(
-											document.getElementById(
-												`${elarray[0]}-${elarray[1]}-${elminus}`
-											)
-										);
+										enpassantparallelEL.push(document.getElementById(`${elarray[0]}-${elarray[1]}-${elminus}`));
 									}
 									if (elplus < 8) {
-										enpassantparallelEL.push(
-											document.getElementById(
-												`${elarray[0]}-${elarray[1]}-${elplus}`
-											)
-										);
+										enpassantparallelEL.push(document.getElementById(`${elarray[0]}-${elarray[1]}-${elplus}`));
 									}
-									for (
-										let i = 0;
-										i < enpassantparallelEL.length;
-										i++
-									) {
+									for (let i = 0;i < enpassantparallelEL.length;i++) {
 										if (
 											enpassantparallelEL[i].innerHTML == whites.pawn
 										) {
@@ -379,34 +335,14 @@ function printID(e) {
 						if (pick == whites.pawn || pick == black.pawn) {
 							if (pick == black.pawn) {
 								if (el.classList.contains("enpassantEater")) {
-									document.getElementById(
-										`${elarray[0]}-${Number(elarray[1]) - 1}-${
-											elarray[2]
-										}`
-									).innerHTML = "";
-									document
-										.getElementById(
-											`${elarray[0]}-${Number(elarray[1]) - 1}-${
-												elarray[2]
-											}`
-										)
-										.classList.remove("enpassant");
+									document.getElementById(`${elarray[0]}-${Number(elarray[1]) - 1}-${elarray[2]}`).innerHTML = "";
+									document.getElementById(`${elarray[0]}-${Number(elarray[1]) - 1}-${elarray[2]}`).classList.remove("enpassant");
 								}
 							}
 							if (pick == whites.pawn) {
 								if (el.classList.contains("enpassantEater")) {
-									document.getElementById(
-										`${elarray[0]}-${Number(elarray[1]) + 1}-${
-											elarray[2]
-										}`
-									).innerHTML = "";
-									document
-										.getElementById(
-											`${elarray[0]}-${Number(elarray[1]) + 1}-${
-												elarray[2]
-											}`
-										)
-										.classList.remove("enpassant");
+									document.getElementById(`${elarray[0]}-${Number(elarray[1]) + 1}-${elarray[2]}`).innerHTML = "";
+									document.getElementById(`${elarray[0]}-${Number(elarray[1]) + 1}-${elarray[2]}`).classList.remove("enpassant");
 								}
 							}
 						}
@@ -437,10 +373,7 @@ function printID(e) {
 					}
 					el.innerHTML = pick;
 					elarray = el.id.split(`-`);
-					if (
-						(pick == whites.pawn && elarray[1] == 0) ||
-						(pick == black.pawn && elarray[1] == 7)
-					) {
+					if ((pick == whites.pawn && elarray[1] == 0) ||(pick == black.pawn && elarray[1] == 7)) {
 						let pawnpromote;
 						pawnpromo();
 						let promopawn = document.querySelectorAll(".promopawn");
@@ -511,10 +444,7 @@ function checked(forgame = false) {
 	}
 	let indexofKingW = whitePiecesinHTML.indexOf(whites.king);
 	let indexOfKingB = blackPiecesinHTML.indexOf(black.king);
-	if (
-		whitePieces[indexofKingW].classList.contains("red") ||
-		blackPieces[indexOfKingB].classList.contains("red")
-	) {
+	if (whitePieces[indexofKingW].classList.contains("red") ||blackPieces[indexOfKingB].classList.contains("red")) {
 		check = true;
 	} else {
 		check = false;
@@ -626,10 +556,7 @@ function chessmoves(selELarr, pick, forgame) {
 		redselectclass = "red";
 	}
 	if (pick == black.pawn || pick == whites.pawn) {
-		if (
-			Number(selELarr[1]) == 1 ||
-			(Number(selELarr[1]) == 6 && pick == whites.pawn)
-		) {
+		if (Number(selELarr[1]) == 1 ||(Number(selELarr[1]) == 6 && pick == whites.pawn)) {
 			np = 3;
 		} else {
 			np = 2;
@@ -641,31 +568,19 @@ function chessmoves(selELarr, pick, forgame) {
 			let elRL = [];
 			if (forgame) {
 				if (selELarr[2] == 0) {
-					rightel = document.getElementById(
-						`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) + 1}`
-					);
+					rightel = document.getElementById(`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) + 1}`);
 				} else if (selELarr[2] >= 0 && selELarr[2] <= 7) {
-					rightel = document.getElementById(
-						`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) + 1}`
-					);
-					leftel = document.getElementById(
-						`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) - 1}`
-					);
+					rightel = document.getElementById(`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) + 1}`);
+					leftel = document.getElementById(`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) - 1}`);
 				} else if (selELarr[2] < 7) {
-					leftel = document.getElementById(
-						`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) - 1}`
-					);
+					leftel = document.getElementById(`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) - 1}`);
 				}
 				elRL.push(leftel);
 				elRL.push(rightel);
 				for (let i = 0; i < elRL.length; i++) {
 					if (elRL[i]) {
 						if (elRL[i].classList.contains("enpassant")) {
-							let enpassantselect = document.getElementById(
-								`${selELarr[0]}-${Number(selELarr[1]) + 1}-${Number(
-									elRL[i].id.split("-")[2]
-								)}`
-							);
+							let enpassantselect = document.getElementById(`${selELarr[0]}-${Number(selELarr[1]) + 1}-${Number(elRL[i].id.split("-")[2])}`);
 							enpassantselect.classList.add("redselect");
 							enpassantselect.classList.add("enpassantEater");
 						}
@@ -679,31 +594,19 @@ function chessmoves(selELarr, pick, forgame) {
 			let elRL = [];
 			if (forgame) {
 				if (selELarr[2] == 0) {
-					rightel = document.getElementById(
-						`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) + 1}`
-					);
+					rightel = document.getElementById(`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) + 1}`);
 				} else if (selELarr[2] >= 0 && selELarr[2] <= 7) {
-					rightel = document.getElementById(
-						`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) + 1}`
-					);
-					leftel = document.getElementById(
-						`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) - 1}`
-					);
+					rightel = document.getElementById(`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) + 1}`);
+					leftel = document.getElementById(`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) - 1}`);
 				} else if (selELarr[2] < 7) {
-					leftel = document.getElementById(
-						`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) - 1}`
-					);
+					leftel = document.getElementById(`${selELarr[0]}-${selELarr[1]}-${Number(selELarr[2]) - 1}`);
 				}
 				elRL.push(leftel);
 				elRL.push(rightel);
 				for (let i = 0; i < elRL.length; i++) {
 					if (elRL[i]) {
 						if (elRL[i].classList.contains("enpassant")) {
-							let enpassantselect = document.getElementById(
-								`${selELarr[0]}-${Number(selELarr[1]) - 1}-${Number(
-									elRL[i].id.split("-")[2]
-								)}`
-							);
+							let enpassantselect = document.getElementById(`${selELarr[0]}-${Number(selELarr[1]) - 1}-${Number(elRL[i].id.split("-")[2])}`);
 							enpassantselect.classList.add("redselect");
 							enpassantselect.classList.add("enpassantEater");
 						}
@@ -768,11 +671,7 @@ function chessmoves(selELarr, pick, forgame) {
 						let ischeck;
 						if (a == 0) {
 							for (let b = 1; b < 4; b++) {
-								if (
-									document.getElementById(
-										`${selELarr[0]}-${selELarr[1]}-${b}`
-									).innerHTML != ""
-								) {
+								if (document.getElementById(`${selELarr[0]}-${selELarr[1]}-${b}`).innerHTML != "") {
 									clearpath = false;
 									break;
 								}
@@ -870,9 +769,7 @@ function moveVerticalPlus(n,selELarr,pick,select = "select",redselect = "redsele
 			}
 		}
 		for (let i = 1; i < selELarr1.length; i++) {
-			let posiblemoves = document.getElementById(
-				`${selELarr[0]}-${selELarr1[i]}-${selELarr[2]}`
-			);
+			let posiblemoves = document.getElementById(`${selELarr[0]}-${selELarr1[i]}-${selELarr[2]}`);
 			if (pick == whites.pawn || pick == black.pawn) {
 				pawnEating(selELarrcopy, pickcopy, selELarr1, redselect);
 
@@ -906,12 +803,8 @@ function moveVerticalPlus(n,selELarr,pick,select = "select",redselect = "redsele
 function pawnEating(selELarr, pick, selELarr1, redselect) {
 	let selEatarr = Number(selELarr[2]) + 1;
 	let selEatarr2 = Number(selELarr[2]) - 1;
-	let possibleEatenmoves1 = document.getElementById(
-		`${selELarr[0]}-${selELarr1[1]}-${selEatarr}`
-	);
-	let possibleEatenmoves2 = document.getElementById(
-		`${selELarr[0]}-${selELarr1[1]}-${selEatarr2}`
-	);
+	let possibleEatenmoves1 = document.getElementById(`${selELarr[0]}-${selELarr1[1]}-${selEatarr}`);
+	let possibleEatenmoves2 = document.getElementById(`${selELarr[0]}-${selELarr1[1]}-${selEatarr2}`);
 
 	if (selEatarr < 8 && possibleEatenmoves1.innerHTML != "") {
 		possibleEatenmoves1.classList.add(redselect);
@@ -947,9 +840,7 @@ function moveVerticalMinus(n,selELarr,pick,select = "select",redselect = "redsel
 			}
 		}
 		for (let i = 1; i < selELarr1.length; i++) {
-			let posiblemoves = document.getElementById(
-				`${selELarr[0]}-${selELarr1[i]}-${selELarr[2]}`
-			);
+			let posiblemoves = document.getElementById(`${selELarr[0]}-${selELarr1[i]}-${selELarr[2]}`);
 			if (pick == whites.pawn || pick == black.pawn) {
 				pawnEating(selELarrcopy, pickcopy, selELarr1, redselect);
 				let CP = (element) => element === pick;
@@ -966,10 +857,7 @@ function moveVerticalMinus(n,selELarr,pick,select = "select",redselect = "redsel
 					let PM = (element) => element === posiblemoves.innerHTML;
 
 					//check if pick chess peice is black or white
-					if (
-						(blackP.some(CP) && blackP.some(PM)) ||
-						(whiteP.some(CP) && whiteP.some(PM))
-					) {
+					if ((blackP.some(CP) && blackP.some(PM)) || (whiteP.some(CP) && whiteP.some(PM))) {
 						break;
 					} else if (pick != whites.pawn || pick != black.pawn) {
 						posiblemoves.classList.add(redselect);
@@ -992,9 +880,7 @@ function moveSideRight(n,selELarr,pick,select = "select",redselect = "redselect"
 			}
 		}
 		for (let i = 1; i < selELarr1.length; i++) {
-			let posiblemoves = document.getElementById(
-				`${selELarr[0]}-${selELarr[1]}-${selELarr1[i]}`
-			);
+			let posiblemoves = document.getElementById(`${selELarr[0]}-${selELarr[1]}-${selELarr1[i]}`);
 			if (posiblemoves.innerHTML != "") {
 				//if there is a peice on its way stop
 				//Check if Black or White Piece
@@ -1067,9 +953,7 @@ function moveDiagonal1(n,selELarr,pick,select = "select",redselect = "redselect"
 				let PM = (element) => element === posiblemoves.innerHTML;
 
 				//check if pick chess peice is black or white
-				if (
-					(blackP.some(CP) && blackP.some(PM)) ||
-					(whiteP.some(CP) && whiteP.some(PM))
+				if ((blackP.some(CP) && blackP.some(PM)) || (whiteP.some(CP) && whiteP.some(PM))
 				) {
 					break;
 				} else {
@@ -1129,9 +1013,7 @@ function moveDiagonal3(n,selELarr,pick,select = "select",redselect = "redselect"
 			}
 		}
 		for (let i = 1; i < selELarr1.length; i++) {
-			let posiblemoves = document.getElementById(
-				`${selELarr[0]}-${selELarr1[i]}-${selELarr2[i]}`
-			);
+			let posiblemoves = document.getElementById(`${selELarr[0]}-${selELarr1[i]}-${selELarr2[i]}`);
 			if (posiblemoves.innerHTML != "") {
 				//if there is a peice on its way stop
 				//Check if Black or White Piece
@@ -1162,9 +1044,7 @@ function moveDiagonal4(n,selELarr,pick,select = "select",redselect = "redselect"
 			}
 		}
 		for (let i = 1; i < selELarr1.length; i++) {
-			let posiblemoves = document.getElementById(
-				`${selELarr[0]}-${selELarr1[i]}-${selELarr2[i]}`
-			);
+			let posiblemoves = document.getElementById(`${selELarr[0]}-${selELarr1[i]}-${selELarr2[i]}`);
 			if (posiblemoves.innerHTML != "") {
 				//if there is a peice on its way stop
 				//Check if Black or White Piece
@@ -1172,10 +1052,7 @@ function moveDiagonal4(n,selELarr,pick,select = "select",redselect = "redselect"
 				let PM = (element) => element === posiblemoves.innerHTML;
 
 				//check if pick chess peice is black or white
-				if (
-					(blackP.some(CP) && blackP.some(PM)) ||
-					(whiteP.some(CP) && whiteP.some(PM))
-				) {
+				if ((blackP.some(CP) && blackP.some(PM)) ||(whiteP.some(CP) && whiteP.some(PM))) {
 					break;
 				} else {
 					posiblemoves.classList.add(redselect);
@@ -1221,9 +1098,7 @@ function horsemove(selELarr, pick, select, redselect) {
 		}
 	}
 	for (let i = 0; i < selELarrl1k2.length; i++) {
-		let posiblemoves = document.getElementById(
-			`${selELarr[0]}-${selELarrl1k2[i][0]}-${selELarrl1k2[i][1]}`
-		);
+		let posiblemoves = document.getElementById(`${selELarr[0]}-${selELarrl1k2[i][0]}-${selELarrl1k2[i][1]}`);
 
 		posiblemoves.classList.add(select);
 		if (posiblemoves.innerHTML != "") {
@@ -1245,9 +1120,9 @@ function horsemove(selELarr, pick, select, redselect) {
 function Checkmate() {
 	overlay.classList.remove("hidden");
 	if (activePlayer == "whiteP") {
-		winnerText.innerHTML = `Player ${black.king} wins`;
+		winnerText.innerHTML = `Player White${white.king} wins`;
 	} else {
-		winnerText.innerHTML = `Player ${black.king} wins`;
+		winnerText.innerHTML = `Player Black${black.king} wins`;
 	}
 }
 
